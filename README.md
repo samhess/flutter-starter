@@ -1,4 +1,4 @@
-# moontrade_flutter
+# trademate
 
 A new Flutter project.
 

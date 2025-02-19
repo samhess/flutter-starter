@@ -1,6 +1,6 @@
 {
-    "name": "moontrade_flutter",
-    "short_name": "moontrade_flutter",
+    "name": "trademate",
+    "short_name": "trademate",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
