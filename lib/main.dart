@@ -1,18 +1,7 @@
-
-import 'country.dart' show RandomCountryPage;
-import 'home.dart' show MyHomePage;
 import 'package:flutter/material.dart';
-//import 'package:go_router/go_router.dart';
-
-// GoRouter configuration
-/* final _router = GoRouter(
-  routes: [
-    GoRoute(
-      path: '/',
-      builder: (context, state) => const MyHomePage(title: 'Flutter Demo Home Page'),
-    ),
-  ],
-); */
+import 'layout.dart' show Layout;
+import 'button.dart' show ButtonPage;
+import 'country.dart' show RandomCountryPage;
 
 void main() {
   runApp(const MyApp());
@@ -48,10 +37,11 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => const MyHomePage(title: 'Flutter Demo Home Page'),
+        '/button': (context) => const ButtonPage(title: 'Flutter Demo Home Page'),
         '/country': (context) => const RandomCountryPage(title: 'Random Country'),
+        '/layout': (context) => const Layout(),
       } ,
-      initialRoute: '/',
+      initialRoute: '/layout',
     );
   }
 }
