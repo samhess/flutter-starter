@@ -16,22 +16,36 @@ class Layout extends StatelessWidget {
         title: Text(title),
         centerTitle: true,
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text('Drawer Header'),
+            ),
+            ListTile(
+              title: const Text('Button'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Country'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: controller.selectedIndex.value,
         onDestinationSelected: (index) => controller.selectedIndex.value = index,
         destinations: const [
-          NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.check),
-            label: 'Test',
-          ),
-          NavigationDestination(
-            icon: Icon(Icons.info),
-            label: 'Country',
-          ),
+          NavigationDestination(icon:Icon(Icons.home), label:'Home'),
+          NavigationDestination(icon:Icon(Icons.check), label:'Test'),
+          NavigationDestination(icon:Icon(Icons.info), label:'Country'),
         ],
       ),
       body: Obx(()=>controller.screens[controller.selectedIndex.value]), // This trailing comma makes auto-formatting nicer for build methods.
@@ -42,9 +56,9 @@ class Layout extends StatelessWidget {
 class LayoutController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    Container(color: Colors.orange),
-    const ButtonPage(title: 'foo',),
-    const RandomCountryPage(title: 'foo2',)
+    Container(color: Colors.white),
+    const ButtonPage(),
+    const RandomCountryPage()
   ];
 }
 

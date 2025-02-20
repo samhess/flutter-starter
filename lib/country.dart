@@ -36,8 +36,7 @@ class Country {
 }
 
 class RandomCountryPage extends StatefulWidget {
-  const RandomCountryPage({super.key, required this.title});
-  final String title;
+  const RandomCountryPage({super.key});
 
   @override
   State<RandomCountryPage> createState() => _RandomCountryPageState();
