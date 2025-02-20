@@ -35,14 +35,14 @@ class Country {
   }
 }
 
-class RandomCountryPage extends StatefulWidget {
-  const RandomCountryPage({super.key});
+class CountryScreen extends StatefulWidget {
+  const CountryScreen({super.key});
 
   @override
-  State<RandomCountryPage> createState() => _RandomCountryPageState();
+  State<CountryScreen> createState() => _CountryScreenState();
 }
 
-class _RandomCountryPageState extends State<RandomCountryPage> {
+class _CountryScreenState extends State<CountryScreen> {
   late Future<List<Country>> _futureCountries;
   Country? _currentCountry;
 

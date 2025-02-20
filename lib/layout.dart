@@ -1,15 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'country.dart' show RandomCountryPage;
-import 'button.dart' show ButtonPage;
+import 'home.dart' show HomeScreen;
+import 'button.dart' show ButtonScreen;
+import 'country.dart' show CountryScreen;
 
-class Layout extends StatelessWidget {
+class Layout extends StatefulWidget {
   const Layout({super.key});
-  final String title='Moontrade';
+
+  @override
+  State<Layout> createState() => _Layout();
+}
+
+class _Layout extends State<Layout> {
+  final String title='Trademate';
+  final List<Widget> screens = const [
+    HomeScreen(),
+    ButtonScreen(),
+    CountryScreen(),
+  ];
+  int _selectedIndex = 0;
+  Widget _selectedScreen = const HomeScreen();
+
+  void _onScreenSelected(int index) {
+    setState(() {
+      _selectedIndex = index;
+      _selectedScreen = screens.elementAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(LayoutController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -22,43 +41,33 @@ class Layout extends StatelessWidget {
           children: [
             const DrawerHeader(
               decoration: BoxDecoration(color: Colors.blue),
-              child: Text('Drawer Header'),
+              child: Text('Menu'),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              onTap: () => _onScreenSelected(0),
             ),
             ListTile(
               title: const Text('Button'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => _onScreenSelected(1),
             ),
             ListTile(
               title: const Text('Country'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+              onTap: () => _onScreenSelected(2),
             ),
           ],
         ),
       ),
       bottomNavigationBar: NavigationBar(
-        selectedIndex: controller.selectedIndex.value,
-        onDestinationSelected: (index) => controller.selectedIndex.value = index,
+        selectedIndex: _selectedIndex,
+        onDestinationSelected: (index) => _onScreenSelected(index),
         destinations: const [
           NavigationDestination(icon:Icon(Icons.home), label:'Home'),
           NavigationDestination(icon:Icon(Icons.check), label:'Test'),
-          NavigationDestination(icon:Icon(Icons.info), label:'Country'),
+          NavigationDestination(icon:Icon(Icons.flag), label:'Country'),
         ],
       ),
-      body: Obx(()=>controller.screens[controller.selectedIndex.value]), // This trailing comma makes auto-formatting nicer for build methods.
+      body: _selectedScreen, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
-
-class LayoutController extends GetxController {
-  final Rx<int> selectedIndex = 0.obs;
-  final screens = [
-    Container(color: Colors.white),
-    const ButtonPage(),
-    const RandomCountryPage()
-  ];
-}
-

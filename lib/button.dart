@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ButtonPage extends StatefulWidget {
-  const ButtonPage({super.key});
+class ButtonScreen extends StatefulWidget {
+  const ButtonScreen({super.key});
 
   @override
-  State<ButtonPage> createState() => _ButtonPageState();
+  State<ButtonScreen> createState() => _ButtonScreenState();
 }
 
-class _ButtonPageState extends State<ButtonPage> {
+class _ButtonScreenState extends State<ButtonScreen> {
   int _counter = 0;
 
   void _incrementCounter() {
