@@ -5,7 +5,9 @@ import 'package:intl/intl.dart' show NumberFormat;
 import 'package:flutter/material.dart';
 
 Future<List<Country>> fetchAllCountries() async {
-  final response = await http.get(Uri.parse('https://restcountries.com/v3/all'));
+  final response = await http.get(
+    Uri.parse('https://restcountries.com/v3/all'),
+  );
   List<dynamic> countries = json.decode(response.body);
   return countries.map((country) => Country.fromJson(country)).toList();
 }
@@ -17,12 +19,13 @@ class Country {
   final int population;
   final String flag;
 
-  const Country(
-      {required this.name,
-        required this.region,
-        required this.capitals,
-        required this.population,
-        required this.flag});
+  const Country({
+    required this.name,
+    required this.region,
+    required this.capitals,
+    required this.population,
+    required this.flag,
+  });
 
   factory Country.fromJson(Map<String, dynamic> json) {
     return Country(
@@ -67,10 +70,11 @@ class _CountryScreenState extends State<CountryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: _currentCountry == null
-            ? const CircularProgressIndicator()
-            : CountryDetails(_currentCountry!),
-        ),
+        child:
+            _currentCountry == null
+                ? const CircularProgressIndicator()
+                : CountryDetails(_currentCountry!),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _getRandomCountry,
         tooltip: 'Random',
@@ -121,18 +125,16 @@ class CountryProperty extends StatelessWidget {
       padding: const EdgeInsets.all(5),
       child: RichText(
         text: TextSpan(
-            style: const TextStyle(
-              fontSize: 14.0,
-              color: Colors.black,
+          style: const TextStyle(fontSize: 14.0, color: Colors.black),
+          children: <TextSpan>[
+            TextSpan(
+              text: '$property: ',
+              style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            children: <TextSpan>[
-              TextSpan(
-                  text: '$property: ',
-                  style: const TextStyle(fontWeight: FontWeight.bold)),
-              TextSpan(text: value),
-            ]),
+            TextSpan(text: value),
+          ],
+        ),
       ),
     );
   }
 }
-

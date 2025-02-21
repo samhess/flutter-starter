@@ -11,7 +11,7 @@ class Layout extends StatefulWidget {
 }
 
 class _Layout extends State<Layout> {
-  final String title='Trademate';
+  final String title = 'Trademate';
   final List<Widget> screens = const [
     HomeScreen(),
     ButtonScreen(),
@@ -62,12 +62,13 @@ class _Layout extends State<Layout> {
         selectedIndex: _selectedIndex,
         onDestinationSelected: (index) => _onScreenSelected(index),
         destinations: const [
-          NavigationDestination(icon:Icon(Icons.home), label:'Home'),
-          NavigationDestination(icon:Icon(Icons.check), label:'Test'),
-          NavigationDestination(icon:Icon(Icons.flag), label:'Country'),
+          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
+          NavigationDestination(icon: Icon(Icons.check), label: 'Test'),
+          NavigationDestination(icon: Icon(Icons.flag), label: 'Country'),
         ],
       ),
-      body: _selectedScreen, // This trailing comma makes auto-formatting nicer for build methods.
+      body:
+          _selectedScreen, // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
