@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'home.dart' show HomeScreen;
-import 'button.dart' show ButtonScreen;
+import 'counter.dart' show CounterScreen;
 import 'country.dart' show CountryScreen;
+import 'album.dart' show AlbumScreen;
 
 class Layout extends StatefulWidget {
   const Layout({super.key});
@@ -14,8 +15,9 @@ class _Layout extends State<Layout> {
   final String title = 'Trademate';
   final List<Widget> screens = const [
     HomeScreen(),
-    ButtonScreen(),
+    CounterScreen(),
     CountryScreen(),
+    AlbumScreen(),
   ];
   int _selectedIndex = 0;
   Widget _selectedScreen = const HomeScreen();
@@ -65,6 +67,7 @@ class _Layout extends State<Layout> {
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.check), label: 'Test'),
           NavigationDestination(icon: Icon(Icons.flag), label: 'Country'),
+          NavigationDestination(icon: Icon(Icons.music_note), label: 'Album'),
         ],
       ),
       body:
