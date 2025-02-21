@@ -78,9 +78,6 @@ class _CountryScreenState extends State<CountryScreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: _getRandomCountry,
         tooltip: 'Random',
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-        backgroundColor: const Color(0xFF1068EB),
-        foregroundColor: Colors.white,
         child: const Icon(Icons.replay),
       ),
     );

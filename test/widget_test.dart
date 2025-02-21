@@ -15,7 +15,7 @@ void main() {
     await tester.pumpWidget(const App());
 
     // navigate to screen
-    await tester.tap(find.byIcon(Icons.check));
+    await tester.tap(find.byIcon(Icons.plus_one));
     await tester.pump();
 
     // Verify that our counter starts at 0.
