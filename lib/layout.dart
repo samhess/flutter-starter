@@ -4,14 +4,12 @@ import 'package:trademate/counter.dart' show CounterScreen;
 import 'package:trademate/country.dart' show CountryScreen;
 import 'package:trademate/album.dart' show AlbumScreen;
 
-class MyRoute {
-  final int index;
+class Route {
   final String path;
   final String name;
   final Widget screen;
 
-  const MyRoute({
-    required this.index,
+  const Route({
     required this.path,
     required this.name,
     required this.screen,
@@ -19,24 +17,12 @@ class MyRoute {
 }
 
 class Layout extends StatefulWidget {
-  final List<MyRoute> routes = const [
-    MyRoute(index:0, path:'/', name:'Home', screen:HomeScreen()),
-    MyRoute(index:1, path:'/counter', name:'Counter', screen:CounterScreen()),
-    MyRoute(index:2, path:'/country', name:'Country', screen:CountryScreen()),
-    MyRoute(index:3, path:'/album', name:'Album', screen:AlbumScreen())
+  final List<Route> routes = const [
+    Route(path:'/', name:'Home', screen:HomeScreen()),
+    Route(path:'/counter', name:'Counter', screen:CounterScreen()),
+    Route(path:'/country', name:'Country', screen:CountryScreen()),
+    Route(path:'/album', name:'Album', screen:AlbumScreen())
   ];
-  final Map<int,String> routesMap = const {
-    0: '/',
-    1: '/counter',
-    2: '/country',
-    3: '/album',
-  };
-  final Map<int,Widget> screens = const {
-    0: HomeScreen(),
-    1: CounterScreen(),
-    2: CountryScreen(),
-    3: AlbumScreen(),
-  };
   final String title;
   final int index;
 
@@ -49,7 +35,7 @@ class Layout extends StatefulWidget {
 class _Layout extends State<Layout> {
 
   void onScreenSelected(int index) {
-    final String route = widget.routes.elementAt(index).path;
+    final String route = widget.routes[index].path;
     Navigator.pushNamed(context,route);
   }
 
@@ -68,10 +54,10 @@ class _Layout extends State<Layout> {
             const DrawerHeader(
               child: Text('Menu'),
             ),
-            for (var route in widget.routes)
+            for (final (index,route) in widget.routes.indexed)
               ListTile(
                 title: Text(route.name),
-                onTap: () => onScreenSelected(route.index),
+                onTap: () => onScreenSelected(index),
               )
           ],
         ),

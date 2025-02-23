@@ -8,32 +8,34 @@ class CounterScreen extends StatefulWidget {
 }
 
 class _CounterScreenState extends State<CounterScreen> {
-  int _counter = 0;
+  int counter = 0;
 
-  void _incrementCounter() {
+  void incrementCounter() {
     setState(() {
-      _counter++;
+      counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          const Text('You have pushed the button this many times:',
+            textAlign: TextAlign.center,
+          ),
+          Text(
+            '$counter',
+            style: Theme.of(context).textTheme.titleLarge,
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
