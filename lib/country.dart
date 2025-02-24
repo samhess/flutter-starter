@@ -1,5 +1,5 @@
-import 'dart:math' show Random;
-import 'dart:convert' show jsonDecode, utf8;
+import 'dart:math' as math;
+import 'dart:convert' show utf8, jsonDecode;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart' show NumberFormat;
 import 'package:flutter/material.dart';
@@ -72,7 +72,7 @@ class _CountryScreenState extends State<CountryScreen> {
 
   void _getRandomCountry() async {
     final countries = await _futureCountries;
-    final randomIndex = Random().nextInt(countries.length);
+    final randomIndex = math.Random().nextInt(countries.length);
     final randomCountry = countries[randomIndex];
 
     setState(() {
