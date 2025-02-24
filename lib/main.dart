@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+//import 'package:flutter/rendering.dart';
 import 'layout.dart' show Layout;
 
 void main() {
+  //debugPaintSizeEnabled = true;
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     title: 'Trademate',

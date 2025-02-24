@@ -72,7 +72,10 @@ class _Layout extends State<Layout> {
           NavigationDestination(icon: Icon(Icons.music_note), label: 'Album'),
         ],
       ),
-      body: SelectionArea(child: widget.routes[widget.index].screen) , // This trailing comma makes auto-formatting nicer for build methods.
+      body: SizedBox(
+        height: 600,
+        child: SelectionArea(child: widget.routes[widget.index].screen),
+      ) , // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

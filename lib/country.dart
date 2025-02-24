@@ -1,5 +1,5 @@
 import 'dart:math' show Random;
-import 'dart:convert' show json;
+import 'dart:convert' show jsonDecode, utf8;
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart' show NumberFormat;
 import 'package:flutter/material.dart';
@@ -8,8 +8,23 @@ Future<List<Country>> fetchAllCountries() async {
   final response = await http.get(
     Uri.parse('https://restcountries.com/v3/all'),
   );
-  List<dynamic> countries = json.decode(response.body);
-  return countries.map((country) => Country.fromJson(country)).toList();
+  if (response.statusCode == 200) {
+    String body = utf8.decode(response.bodyBytes);
+    List<dynamic> json = jsonDecode(body);
+    debugPrint('Downloaded ${json.length} countries');
+    List<Country> countries = [];
+    for (final record in json) {
+      final country = Map<String,dynamic>.from(record);
+      if (!country.containsKey('capital')) { // e.g. Antarctica
+        country['capital'] = [];
+      }
+      countries.add(Country.fromJson(country));
+    }
+    debugPrint('Parsed ${countries.length} countries');
+    return countries;
+  } else {
+    throw Exception('Failed to download countries');
+  }
 }
 
 class Country {
@@ -27,14 +42,20 @@ class Country {
     required this.flag,
   });
 
-  factory Country.fromJson(Map<String, dynamic> json) {
-    return Country(
-      name: json['name']['common'],
-      region: json['region'],
-      capitals: json['capital'] ?? List.empty(),
-      population: json['population'],
-      flag: json['flags'][1],
-    );
+  factory Country.fromJson(Map<String,dynamic> json) {
+    switch(json) {
+     case {
+      'name': Map<String,dynamic> name, 
+      'region': String region, 
+      'capital': List capitals, 
+      'population': int popuation, 
+      'flags': List flags
+      }: return Country(name:name['common'], region:region, capitals:capitals, population:popuation, flag:flags[1]);
+      default: {
+        debugPrint(json.toString());
+        throw const FormatException('Failed to convert country');
+      } 
+    }
   }
 }
 
@@ -93,19 +114,27 @@ class CountryDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var formatter = NumberFormat.decimalPattern('en-US');
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(bottom: 10),
-          child: Image.network(country.flag, height: 200),
-        ),
-        CountryProperty('Name', country.name),
-        CountryProperty('Region', country.region),
-        if (country.capitals.isNotEmpty)
-          CountryProperty('Capital', country.capitals[0]),
-        CountryProperty('Population', formatter.format(country.population)),
-      ],
+    return SizedBox(
+      height: 400,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 200,
+            child: Image.network(
+              country.flag, 
+              height: 200,
+              cacheHeight: 125,
+              cacheWidth: 187,
+            ),
+          ),
+          CountryProperty('Name', country.name),
+          CountryProperty('Region', country.region),
+          if (country.capitals.isNotEmpty)
+            CountryProperty('Capital', country.capitals[0]),
+          CountryProperty('Population', formatter.format(country.population)),
+        ],
+      ),
     );
   }
 }
