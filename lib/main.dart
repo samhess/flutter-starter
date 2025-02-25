@@ -6,7 +6,7 @@ void main() {
   //debugPaintSizeEnabled = true;
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    title: 'Trademate',
+    title: 'Demo App',
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
     ),

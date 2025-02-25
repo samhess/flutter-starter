@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:trademate/home.dart' show HomeScreen;
-import 'package:trademate/counter.dart' show CounterScreen;
-import 'package:trademate/country.dart' show CountryScreen;
-import 'package:trademate/album.dart' show AlbumScreen;
+import 'package:demoapp/home.dart' show HomeScreen;
+import 'package:demoapp/counter.dart' show CounterScreen;
+import 'package:demoapp/country.dart' show CountryScreen;
+import 'package:demoapp/album.dart' show AlbumScreen;
 
 class Route {
   final String path;

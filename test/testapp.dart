@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:trademate/layout.dart' show Layout;
+import 'package:demoapp/layout.dart' show Layout;
 
 void main() {
   runApp(const TestApp());
@@ -12,7 +12,7 @@ class TestApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Trademate',
+      title: 'Test App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
