@@ -12,11 +12,11 @@ void main() {
     ),
     initialRoute: '/counter',
     routes: {
-      '/counter': (context) => Layout(index:0, title:'Counter'),
-      '/country': (context) => Layout(index:1, title:'Country'),
-      '/sunflower': (context) => Layout(index:2, title:'Sunflower'),
-      '/brick-breaker': (context) => Layout(index:3, title:'Brick Braker'),
-      '/words': (context) => Layout(index:4, title:'Words'),
+      '/counter': (context) => Layout(route:'/counter'),
+      '/country': (context) => Layout(route:'/country'),
+      '/sunflower': (context) => Layout(route:'/sunflower'),
+      '/brick-breaker': (context) => Layout(route:'/brick-breaker'),
+      '/words': (context) => Layout(route:'/words'),
     },
     )
   );

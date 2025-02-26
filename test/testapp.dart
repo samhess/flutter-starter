@@ -17,7 +17,7 @@ class TestApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
       debugShowCheckedModeBanner: false,
-      home: Layout(index:1, title:'Counter'),
+      home: Layout(route:'/counter'),
     );
   }
 }
