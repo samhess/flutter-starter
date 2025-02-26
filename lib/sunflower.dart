@@ -1,23 +1,18 @@
 import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
 const int maxSeeds = 250;
 
-void main() {
-  runApp(const Sunflower());
-}
-
-class Sunflower extends StatefulWidget {
-  const Sunflower({super.key});
+class SunflowerScreen extends StatefulWidget {
+  const SunflowerScreen({super.key});
 
   @override
   State<StatefulWidget> createState() {
-    return _SunflowerState();
+    return _SunflowerScreenState();
   }
 }
 
-class _SunflowerState extends State<Sunflower> {
+class _SunflowerScreenState extends State<SunflowerScreen> {
   int seeds = maxSeeds ~/ 2;
 
   @override
@@ -29,9 +24,6 @@ class _SunflowerState extends State<Sunflower> {
       ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Sunflower'),
-        ),
         body: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

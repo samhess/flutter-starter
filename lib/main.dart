@@ -10,12 +10,13 @@ void main() {
     theme: ThemeData(
       colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
     ),
-    initialRoute: '/',
+    initialRoute: '/counter',
     routes: {
-      '/': (context) => Layout(index:0, title:'Home'),
-      '/counter': (context) => Layout(index:1, title:'Counter'),
-      '/country': (context) => Layout(index:2, title:'Country'),
-      '/album': (context) => Layout(index:3, title:'Album'),
+      '/counter': (context) => Layout(index:0, title:'Counter'),
+      '/country': (context) => Layout(index:1, title:'Country'),
+      '/sunflower': (context) => Layout(index:2, title:'Sunflower'),
+      '/brick-breaker': (context) => Layout(index:3, title:'Brick Braker'),
+      '/words': (context) => Layout(index:4, title:'Words'),
     },
     )
   );

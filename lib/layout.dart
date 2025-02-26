@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:demoapp/home.dart' show HomeScreen;
 import 'package:demoapp/counter.dart' show CounterScreen;
 import 'package:demoapp/country.dart' show CountryScreen;
-import 'package:demoapp/album.dart' show AlbumScreen;
+import 'package:demoapp/sunflower.dart' show SunflowerScreen;
+import 'package:demoapp/brick_breaker.dart' show BrickBreakerScreen;
+import 'package:demoapp/words.dart' show WordsScreen;
 
 class Route {
   final String path;
@@ -18,10 +19,11 @@ class Route {
 
 class Layout extends StatefulWidget {
   final List<Route> routes = const [
-    Route(path:'/', name:'Home', screen:HomeScreen()),
     Route(path:'/counter', name:'Counter', screen:CounterScreen()),
     Route(path:'/country', name:'Country', screen:CountryScreen()),
-    Route(path:'/album', name:'Album', screen:AlbumScreen())
+    Route(path:'/sunflower', name:'Sunflower', screen:SunflowerScreen()),
+    Route(path:'/brick-breaker', name:'Brick Braker', screen:BrickBreakerScreen()),
+    Route(path:'/words', name:'Words', screen:WordsScreen())
   ];
   final String title;
   final int index;
@@ -45,7 +47,7 @@ class _Layout extends State<Layout> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
-        centerTitle: true,
+        centerTitle: true
       ),
       drawer: Drawer(
         child: ListView(
@@ -66,14 +68,14 @@ class _Layout extends State<Layout> {
         selectedIndex: widget.index,
         onDestinationSelected: (index) => onScreenSelected(index),
         destinations: const [
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.plus_one), label: 'Counter'),
           NavigationDestination(icon: Icon(Icons.flag), label: 'Country'),
-          NavigationDestination(icon: Icon(Icons.music_note), label: 'Album'),
+          NavigationDestination(icon: Icon(Icons.yard), label: 'Sunflower'),
+          NavigationDestination(icon: Icon(Icons.gamepad), label: 'Brick Braker'),
+          NavigationDestination(icon: Icon(Icons.wordpress), label: 'Words'),
         ],
       ),
       body: SizedBox(
-        height: 600,
         child: SelectionArea(child: widget.routes[widget.index].screen),
       ) , // This trailing comma makes auto-formatting nicer for build methods.
     );

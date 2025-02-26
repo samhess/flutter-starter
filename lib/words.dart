@@ -1,21 +1,16 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WordsScreen extends StatelessWidget {
+  const WordsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => MyAppState(),
+      create: (context) => WordsScreenState(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Namer App',
         theme: ThemeData(
           useMaterial3: true,
@@ -27,7 +22,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {
+class WordsScreenState extends ChangeNotifier {
   var current = WordPair.random();
   var history = <WordPair>[];
 
@@ -164,7 +159,7 @@ class GeneratorPage extends StatelessWidget {
   const GeneratorPage({super.key});
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<WordsScreenState>();
     var pair = appState.current;
 
     IconData icon;
@@ -257,7 +252,7 @@ class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<WordsScreenState>();
 
     if (appState.favorites.isEmpty) {
       return Center(
@@ -311,7 +306,7 @@ class HistoryListView extends StatefulWidget {
 }
 
 class _HistoryListViewState extends State<HistoryListView> {
-  /// Needed so that [MyAppState] can tell [AnimatedList] below to animate
+  /// Needed so that [WordsScreenState] can tell [AnimatedList] below to animate
   /// new items.
   final _key = GlobalKey();
 
@@ -327,7 +322,7 @@ class _HistoryListViewState extends State<HistoryListView> {
 
   @override
   Widget build(BuildContext context) {
-    final appState = context.watch<MyAppState>();
+    final appState = context.watch<WordsScreenState>();
     appState.historyListKey = _key;
 
     return ShaderMask(

@@ -1,33 +1,27 @@
-/// A simplified brick-breaker game,
-/// built using the Flame game engine for Flutter.
-///
-/// To learn how to build a more complete version of this game yourself,
-/// check out the codelab at https://flutter.dev/to/brick-breaker.
-library;
+// A simplified brick-breaker game,
+// built using the Flame game engine for Flutter.
+//
+// To learn how to build a more complete version of this game yourself,
+// check out the codelab at https://flutter.dev/to/brick-breaker.
 
-import 'dart:async';
 import 'dart:math' as math;
-
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
-void main() {
-  runApp(const GameApp());
-}
 
-class GameApp extends StatefulWidget {
-  const GameApp({super.key});
+class BrickBreakerScreen extends StatefulWidget {
+  const BrickBreakerScreen({super.key});
 
   @override
-  State<GameApp> createState() => _GameAppState();
+  State<BrickBreakerScreen> createState() => _BrickBreakerScreenState();
 }
 
-class _GameAppState extends State<GameApp> {
+class _BrickBreakerScreenState extends State<BrickBreakerScreen> {
   late final BrickBreaker game;
 
   @override
@@ -86,7 +80,7 @@ class BrickBreaker extends FlameGame
   double get height => size.y;
 
   @override
-  FutureOr<void> onLoad() async {
+  Future<void> onLoad() async {
     super.onLoad();
     camera.viewfinder.anchor = Anchor.topLeft;
     world.add(PlayArea());
