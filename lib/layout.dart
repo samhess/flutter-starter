@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:demoapp/counter.dart' show CounterScreen;
-import 'package:demoapp/country.dart' show CountryScreen;
-import 'package:demoapp/sunflower.dart' show SunflowerScreen;
-import 'package:demoapp/brick_breaker.dart' show BrickBreakerScreen;
-import 'package:demoapp/words.dart' show WordsScreen;
+import 'package:demoapp/screens/counter.dart' show CounterScreen;
+import 'package:demoapp/screens/country.dart' show CountryScreen;
+import 'package:demoapp/screens/sunflower.dart' show SunflowerScreen;
+import 'package:demoapp/screens/brick_breaker.dart' show BrickBreakerScreen;
+import 'package:demoapp/screens/words.dart' show WordsScreen;
 
 class Route {
   final String path;

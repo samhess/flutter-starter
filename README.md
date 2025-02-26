@@ -1,8 +1,24 @@
 # Flutter Starter
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application. It runs a [MaterialApp](https://api.flutter.dev/flutter/material/MaterialApp-class.html) with 5 screens/pages.
 
-## Getting Started
+The layout includes:
+- [AppBar](https://api.flutter.dev/flutter/material/AppBar-class.html) (top)
+- [Drawer](https://api.flutter.dev/flutter/material/Drawer-class.html) (left)
+- [NavigationBar](https://api.flutter.dev/flutter/material/NavigationBar-class.html) (bottom)
+- Body
+  - Counter
+  - Country (get random country data from an external API)
+  - Sunflower
+  - Brick Braker (simplified brick-breaker game)
+  - Words (generate compunded words)
+
+### Development
+```sh
+flutter run
+```
+
+### Resources
 
 A few resources to get you started if this is your first Flutter project:
 
